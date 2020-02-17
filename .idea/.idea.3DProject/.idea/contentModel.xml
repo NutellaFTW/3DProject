@@ -6,10 +6,19 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
-          <e p="Movement" t="Include">
-            <e p="CameraFollow.cs" t="Include" />
-            <e p="PlayerMovement.cs" t="Include" />
+          <e p="Mesh" t="Include">
+            <e p="CutHole.cs" t="Include" />
           </e>
+          <e p="Movement" t="Include">
+            <e p="mouseMove.cs" t="Include" />
+            <e p="Movement.cs" t="Include" />
+          </e>
+          <e p="Render" t="Include">
+            <e p="FixRenderQueue.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="DepthMask.shader" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />

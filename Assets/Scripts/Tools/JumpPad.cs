@@ -26,12 +26,15 @@ public class JumpPad : MonoBehaviour
     // Get location player clicks
     public void Update() {
 
+        if (toolManager.sceneLimits[2] == 0)
+            return;
+        
         if (toolManager.currentTool != "Jump Pad") {
             if (spotLight.gameObject.activeSelf)
                 spotLight.gameObject.SetActive(false);
             return;
         }
-        
+
         if (!spotLight.gameObject.activeSelf)
             spotLight.gameObject.SetActive(true);
 
@@ -85,8 +88,10 @@ public class JumpPad : MonoBehaviour
             
             hoverSquare(worldPosition);
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)) {
                 placePad(worldPosition);
+                toolManager.useTool(2);
+            }
 
         } 
         

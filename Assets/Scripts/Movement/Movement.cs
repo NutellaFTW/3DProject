@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -8,19 +9,21 @@ public class Movement : MonoBehaviour
     public CharacterController controller;
 
     public float speed = 12f;
-    public float gravity = -15f;
-    public float jumpHeight = 3;
+    public float gravity = -9.81f;
+    private float jumpHeight = 20f;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     
     public Vector3 velocity;
-    
+
     private bool isGrounded;
-    
 
     public void Update() {
+
+        if (transform.position.y <= -10)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 

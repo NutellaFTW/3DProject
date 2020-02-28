@@ -7,9 +7,18 @@ using UnityEngine.UI;
 
 public class ToolManager : MonoBehaviour {
 
-    public TextMeshProUGUI gui;
-    
     public String currentTool;
+
+    public Image[] images = {};
+
+    public int[] sceneLimits = {};
+
+    public TextMeshProUGUI[] text = {};
+
+    public AudioSource audioSource;
+    public AudioClip[] audioClips;
+
+    public EscapeMenu escapeMenu;
 
     private String[] tools = {
         "Hole Cutter",
@@ -17,8 +26,13 @@ public class ToolManager : MonoBehaviour {
         "Jump Pad"
     };
 
+    private String lastCurrentTool;
+
     public void Start() {
         currentTool = tools[0];
+        lastCurrentTool = currentTool;
+        foreach (TextMeshProUGUI txt in text)
+            txt.text = sceneLimits[Array.IndexOf(text, txt)].ToString();
     }
 
     public void Update() {
@@ -26,7 +40,17 @@ public class ToolManager : MonoBehaviour {
     }
 
     private void switchTool() {
+
+        if (escapeMenu.activated) {
+            currentTool = "Nothing";
+            return;
+        }
         
+        lastCurrentTool = currentTool;
+
+        if (currentTool == "Nothing")
+            currentTool = lastCurrentTool;
+
         float scroll = Input.GetAxisRaw("Mouse ScrollWheel");
         
         if (scroll != 0) {
@@ -46,13 +70,37 @@ public class ToolManager : MonoBehaviour {
                     factor = 1;
             }
 
-            String newTool = tools[toolIndex + factor];
+            int index = toolIndex + factor;
+            
+            String newTool = tools[index];
 
             currentTool = newTool;
-            gui.text = currentTool;
+
+            Image selectedImage = images[index];
             
+            Color color = selectedImage.color;
+            color.a = 1f;
+
+            selectedImage.color = color;
+
+            foreach (Image image in images) {
+                if (image != selectedImage) {
+                    Color seeThrough = image.color;
+                    seeThrough.a = 0.6f;
+                    image.color = seeThrough;
+                }
+            }
+
         }
         
+    }
+
+    public void useTool(int index) {
+        sceneLimits[index] -= 1;
+        text[index].text = sceneLimits[index].ToString();
+        if (index == 0) {
+            audioSource.PlayOneShot(audioClips[0], 0.1f);
+        }
     }
 
 }

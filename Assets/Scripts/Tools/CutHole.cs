@@ -25,6 +25,9 @@ public class CutHole : MonoBehaviour {
     // Get location player clicks
     public void Update() {
 
+        if (toolManager.sceneLimits[0] == 0)
+            return;
+        
         if (toolManager.currentTool != "Hole Cutter") {
             if (spotLight.gameObject.activeSelf)
                 spotLight.gameObject.SetActive(false);
@@ -84,6 +87,7 @@ public class CutHole : MonoBehaviour {
             if (Input.GetMouseButtonDown(0)) {
                 deleteSquare(hitTriangleIndex,
                     findTriangle(vertices[vertex1], vertices[vertex2], hitTriangleIndex));
+                toolManager.useTool(0);
                 deleteJump(worldPosition);
                 deleteVectorPlate(worldPosition);
             }

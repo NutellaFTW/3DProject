@@ -11,6 +11,8 @@ public class VectorPlate : MonoBehaviour {
     public Color spotLightColorToBe;
     public float spotLightHeight = 5f;
 
+    public Movement player;
+
     public GameObject spotLightPrefab;
 
     public List<GameObject> jumpPads = new List<GameObject>();
@@ -26,16 +28,19 @@ public class VectorPlate : MonoBehaviour {
     // Get location player clicks
     public void Update() {
 
+        if (toolManager.sceneLimits[1] == 0)
+            return;
+        
         if (toolManager.currentTool != "Vector Plate") {
             if (spotLight.gameObject.activeSelf)
                 spotLight.gameObject.SetActive(false);
             return;
         }
-        
+
         if (!spotLight.gameObject.activeSelf)
             spotLight.gameObject.SetActive(true);
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && gameObject.name == "PlaneController")
             spotLight.Rotate(0, 0, -90);
 
         RaycastHit raycastHit;
@@ -88,8 +93,10 @@ public class VectorPlate : MonoBehaviour {
             
             hoverSquare(worldPosition);
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)) {
                 placePad(worldPosition);
+                toolManager.useTool(1);
+            }
 
         } 
         

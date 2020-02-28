@@ -69,8 +69,13 @@
     <Compile Include="Assets\Scripts\Movement\JumpPadMovement.cs" />
     <Compile Include="Assets\Scripts\Movement\MouseMove.cs" />
     <Compile Include="Assets\Scripts\Movement\Movement.cs" />
+    <Compile Include="Assets\Scripts\Movement\NextLevel.cs" />
     <Compile Include="Assets\Scripts\Movement\VectorPlateMovement.cs" />
     <Compile Include="Assets\Scripts\Render\FixRenderQueue.cs" />
+    <Compile Include="Assets\Scripts\Scene\EscapeMenu.cs" />
+    <Compile Include="Assets\Scripts\Scene\SceneSwitcher.cs" />
+    <Compile Include="Assets\Scripts\Scene\URLOpen.cs" />
+    <Compile Include="Assets\Scripts\Sounds\MusicSingleton.cs" />
     <Compile Include="Assets\Scripts\Tools\CutHole.cs" />
     <Compile Include="Assets\Scripts\Tools\JumpPad.cs" />
     <Compile Include="Assets\Scripts\Tools\ToolManager.cs" />
@@ -89,6 +94,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Shaders\CullOff.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />

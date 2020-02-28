@@ -11,10 +11,19 @@
             <e p="JumpPadMovement.cs" t="Include" />
             <e p="mouseMove.cs" t="Include" />
             <e p="Movement.cs" t="Include" />
+            <e p="NextLevel.cs" t="Include" />
             <e p="VectorPlateMovement.cs" t="Include" />
           </e>
           <e p="Render" t="Include">
             <e p="FixRenderQueue.cs" t="Include" />
+          </e>
+          <e p="Scene" t="Include">
+            <e p="EscapeMenu.cs" t="Include" />
+            <e p="SceneSwitcher.cs" t="Include" />
+            <e p="URLOpen.cs" t="Include" />
+          </e>
+          <e p="Sounds" t="Include">
+            <e p="MusicSingleton.cs" t="Include" />
           </e>
           <e p="Tools" t="Include">
             <e p="CutHole.cs" t="Include" />
@@ -24,6 +33,7 @@
           </e>
         </e>
         <e p="Shaders" t="Include">
+          <e p="CullOff.shader" t="Include" />
           <e p="DepthMask.shader" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
